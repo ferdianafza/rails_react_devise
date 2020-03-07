@@ -18,11 +18,11 @@ export default () => (
           Sign up
         </Link>
         <Link
-          to="/students"
+          to="/signin"
           className="btn btn-lg custom-button"
           role="button"
         >
-          View Students
+          Sign In
         </Link>
       </div>
     </div>

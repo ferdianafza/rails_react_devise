@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class SignUp extends React.Component {
+export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: "",
-      password_confirmation: ""
+      password: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -28,16 +27,15 @@ export default class SignUp extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const url = "/api/v1/users";
-    const { email, password, password_confirmation } = this.state;
+    const url = "/api/v1/sessions";
+    const { email, password } = this.state;
 
-    if (email.length == 0 || password.length == 0 || password_confirmation.length == 0)
+    if (email.length == 0 || password.length == 0)
       return;
 
     const body = {
       email,
-      password,
-      password_confirmation: password_confirmation.replace(/\n/g, "<br> <br>")
+      password
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -55,7 +53,7 @@ export default class SignUp extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => this.props.history.push(`/`))
+      .then(response => this.props.history.push(`/student`))
       .catch(error => console.log(error.message));
   }
 
@@ -93,20 +91,11 @@ export default class SignUp extends React.Component {
                   Separate each ingredient with a comma.
                 </small>
               </div>
-              <label htmlFor="instruction">Password Confirmation</label>
-              <input
-                className="form-control"
-                id="instruction"
-                name="password_confirmation"
-                type="text"
-                required
-                onChange={this.onChange}
-              />
               <button type="submit" className="btn custom-button mt-3">
-                Create Account
+                Sign In
               </button>
-              <Link to="/signin" className="btn btn-link mt-3">
-                Sign in
+              <Link to="/signup" className="btn btn-link mt-3">
+                Sign Up
               </Link>
             </form>
           </div>
