@@ -1,8 +1,13 @@
-class Signup extends React.Component {
+import React from "react";
+import { Link } from "react-router-dom";
+
+export default class SignUp extends React.Component {
   constructor(props){
     super(props);
     this.handleSignup = this.handleSignup.bind(this);
-  }handleSignup(e) {
+  }
+
+  handleSignup(e) {
     e.preventDefault();
     let that = this
     axios.post('/users', {

@@ -11,11 +11,11 @@ export default () => (
         </p>
         <hr className="my-4" />
         <Link
-          to="/recipes"
+          to="/signup"
           className="btn btn-lg custom-button"
           role="button"
         >
-          View Recipes
+          Sign up
         </Link>
         <Link
           to="/students"
